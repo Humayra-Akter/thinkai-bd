@@ -26,28 +26,31 @@ PARTICIPANT
 
 ## randomized experiment engine:
 
-Participant clicks Begin
-↓
-RANDOM ASSIGNMENT
-↙ ↘
-AI-assisted Control
-50% 50%
-↓ ↓
-Same debate / critical topic
-↓
-Timed preparation workspace
-↓
-Response submission
-↓
-AI becomes unavailable for BOTH
-↓
-Unexpected POI
-↓
-Independent response
-↓
-Confidence rating
-↓
-Performance data
+Homepage
+   ↓
+Research Information
+   ↓
+Consent
+   ↓
+Participant Profile
+   ↓
+AI Usage Assessment
+   ↓
+Cognitive Offloading Assessment
+   ↓
+AI Dependency / Independent Learning
+   ↓
+Randomized Experiment
+   ↓
+Post-Experiment Assessment
+   ↓
+Cognitive Engagement
+   ↓
+Verification Challenge
+   ↓
+Participant Results
+   ↓
+Debrief / Complete
 
 ## scoring
 
