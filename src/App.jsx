@@ -10,6 +10,9 @@ import AIUsage from "./pages/AIUsage";
 import CognitiveOffloading from "./pages/CognitiveOffloading";
 import DependencyAssessment from "./pages/DependencyAssessment";
 import ExperimentIntro from "./pages/ExperimentIntro";
+import ExperimentPreparation from "./pages/ExperimentPreparation";
+import ExperimentChallenge from "./pages/ExperimentChallenge";
+import PostExperiment from "./pages/PostExperiment";
 
 function App() {
   return (
@@ -24,7 +27,13 @@ function App() {
       <Route path="/cognitive-offloading" element={<CognitiveOffloading />} />
       <Route path="/dependency" element={<DependencyAssessment />} />
       <Route path="/experiment-intro" element={<ExperimentIntro />} />
-      
+      <Route
+        path="/experiment/preparation"
+        element={<ExperimentPreparation />}
+      />
+      <Route path="/experiment/challenge" element={<ExperimentChallenge />} />
+      <Route path="/post-experiment" element={<PostExperiment />} />
+
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
