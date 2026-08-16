@@ -40,3 +40,7 @@ export async function getSectionResponses(participantId, section) {
 export async function getAllParticipantResponses(participantId) {
   return db.responses.where("participantId").equals(participantId).toArray();
 }
+
+export async function deleteResponse(participantId, questionId) {
+  await db.responses.delete([participantId, questionId]);
+}

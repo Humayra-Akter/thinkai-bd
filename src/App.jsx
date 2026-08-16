@@ -13,6 +13,7 @@ import ExperimentIntro from "./pages/ExperimentIntro";
 import ExperimentPreparation from "./pages/ExperimentPreparation";
 import ExperimentChallenge from "./pages/ExperimentChallenge";
 import PostExperiment from "./pages/PostExperiment";
+import CognitiveEngagement from "./pages/CognitiveEngagement";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
       />
       <Route path="/experiment/challenge" element={<ExperimentChallenge />} />
       <Route path="/post-experiment" element={<PostExperiment />} />
-
+      <Route path="/cognitive-engagement" element={<CognitiveEngagement />} />
+      
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
