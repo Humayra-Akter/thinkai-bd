@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { BrainCircuit, CheckCircle2, Save } from "lucide-react";
+import { Brain, CheckCircle2, Save } from "lucide-react";
 
 import { useNavigate } from "react-router";
 
@@ -8,7 +8,7 @@ import ResearchPage from "../components/ResearchPage";
 import SurveyProgress from "../components/survey/SurveyProgress";
 import LikertQuestion from "../components/survey/LikertQuestion";
 
-import { cognitiveOffloadingQuestions } from "../data/cognitiveOffloadingQuestions";
+import { dependencyQuestions } from "../data/dependencyQuestions";
 
 import {
   getActiveParticipantId,
@@ -17,9 +17,9 @@ import {
 
 import { getSectionResponses, saveResponse } from "../services/responseService";
 
-const SECTION = "COGNITIVE_OFFLOADING";
+const SECTION = "AI_DEPENDENCY";
 
-function CognitiveOffloading() {
+function DependencyAssessment() {
   const navigate = useNavigate();
 
   const participantId = getActiveParticipantId();
@@ -47,9 +47,9 @@ function CognitiveOffloading() {
 
         setAnswers(stored);
 
-        await updateParticipantProgress("cognitive-offloading");
+        await updateParticipantProgress("dependency");
       } catch (error) {
-        console.error("Could not load cognitive offloading responses:", error);
+        console.error("Could not load dependency assessment:", error);
       } finally {
         setLoading(false);
       }
@@ -60,7 +60,7 @@ function CognitiveOffloading() {
 
   const questions = useMemo(
     () =>
-      cognitiveOffloadingQuestions.map((question, index) => ({
+      dependencyQuestions.map((question, index) => ({
         ...question,
         number: index + 1,
       })),
@@ -110,9 +110,9 @@ function CognitiveOffloading() {
       return;
     }
 
-    await updateParticipantProgress("dependency");
+    await updateParticipantProgress("experiment-intro");
 
-    navigate("/dependency");
+    navigate("/experiment-intro");
   }
 
   if (loading) {
@@ -125,27 +125,26 @@ function CognitiveOffloading() {
 
   return (
     <ResearchPage
-      title="How You Use AI During Academic Tasks"
-      subtitle="Think about your normal study habits. For each statement, select the answer that best describes your usual behaviour."
-      backTo="/ai-usage"
-      step="Assessment 2"
+      title="AI Reliance & Independent Learning"
+      subtitle="Think about how you normally respond when academic work becomes difficult, especially when AI support is unavailable."
+      backTo="/cognitive-offloading"
+      step="Assessment 3"
     >
       <div className="mb-8 rounded-2xl border border-indigo-400/20 bg-indigo-400/5 p-5">
         <div className="flex gap-4">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-300">
-            <BrainCircuit size={21} />
+            <Brain size={21} />
           </div>
 
           <div>
             <h2 className="font-semibold text-slate-100">
-              Think about what AI actually does for you
+              Focus on your actual behaviour
             </h2>
 
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Some students use AI mainly for routine assistance, while others
-              use it during planning, reasoning, and problem-solving. We are
-              interested in your actual habits, not what you think the ideal
-              answer should be.
+              Consider what usually happens when you become stuck, when AI is
+              unavailable, or when you need to reproduce something you
+              previously learned with AI.
             </p>
           </div>
         </div>
@@ -196,10 +195,10 @@ function CognitiveOffloading() {
         onClick={handleContinue}
         className="mt-8 w-full rounded-xl bg-indigo-500 px-6 py-4 font-semibold transition enabled:hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        Continue
+        Continue to Experimental Task
       </button>
     </ResearchPage>
   );
 }
 
-export default CognitiveOffloading;
+export default DependencyAssessment;
